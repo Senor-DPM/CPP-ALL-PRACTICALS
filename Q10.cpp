@@ -4,16 +4,16 @@ using namespace std;
 
 class Triangle{
     public:
-        int x, y, z;
-        Triangle(int a, int b, int c);
-        int calcArea(int b, int h);
-        int calcArea(int a, int b, int c);
+        double x, y, z;
+        Triangle(double a, double b, double c);
+        double calcArea(double b, double h);
+        double calcArea();
         ~Triangle(){};
 };
 
-Triangle :: Triangle(int a, int b, int c){
+Triangle :: Triangle(double a, double b, double c){
     try{
-        if(a+b<c && a+c<b && b+c<a){
+        if(a+b<c || a+c<b || b+c<a){
             throw "TriangleInequalityException";
         } else if(a<=0 || b<=0 || c<=0){
             throw "InvalidTriangle";
@@ -28,13 +28,21 @@ Triangle :: Triangle(int a, int b, int c){
     }
 }
 
-int Triangle :: calcArea(int b, int h){
-    float area=0.5*b*h;
+double Triangle :: calcArea(double b, double h){
+    double area=0.5*b*h;
     return area;
 }
 
-int Triangle :: calcArea(int a, int b, int c){
-    float s=(a+b+c)/3;
-    float area=pow(s*(s-a)*(s-b)*(s-c), 0.5);
+double Triangle :: calcArea(){
+    double s=(x+y+z)/2;
+    double area=pow(s*(s-x)*(s-y)*(s-z), 0.5);
     return area;
+}
+
+int main(){
+    Triangle t1(4,7,4);
+    Triangle t2(3,4,5);
+    Triangle t3(3,6, 1);
+    cout<<"Area of t1 : "<<t1.calcArea()<<endl;
+    cout<<"Area of t2 : "<<t2.calcArea(3,4)<<endl;
 }
