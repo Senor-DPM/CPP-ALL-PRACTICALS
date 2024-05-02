@@ -9,19 +9,21 @@ class Person{
         Person(string n) : name(n){};
 };
 
-class Student : Person{
-    string course;
-    float marks;
-    int year;
-    Student(string n, string c, float m, int y) : Person(n), course(c), marks(m), year(y){};
-    void display();
+class Student : public Person{
+    public:
+        string course;
+        float marks;
+        int year;
+        Student(string n, string c, float m, int y) : Person(n), course(c), marks(m), year(y){};
+        void display();
 };
 
-class Employee : Person{
-    string dept;
-    int sal;
-    Employee(string n, string d, int s) : Person(n), dept(d), sal(s){};
-    void display();
+class Employee : public Person{
+    public:
+        string dept;
+        int sal;
+        Employee(string n, string d, int s) : Person(n), dept(d), sal(s){};
+        void display();
 };
 
 void Person :: display(){
@@ -43,4 +45,15 @@ void Employee :: display(){
 
 void show_info(Person *obj) {
     obj->display();
+}
+
+int main() {
+    Student s("John", "Computer Science", 85.5, 3);
+    Employee e("Alice", "Human Resources", 50000);
+
+    show_info(&s);
+    cout<<endl;
+    show_info(&e);
+
+    return 0;
 }
