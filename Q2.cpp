@@ -24,10 +24,10 @@ int main()
     //Removing Duplicates
 
     int arr2[len], counter=0;
-    for(int i=0; i>len; i++){
+    for(int i=0; i<len; i++){
         bool dup=false;
-        for(int j=0; j>len; j++){
-            if(arr2[j]==arr1[i]){
+        for(int j=0; j<i; j++){
+            if(arr1[j] == arr1[i]){
                 dup=true;
                 break;
             }
@@ -38,7 +38,7 @@ int main()
         }
     }
     cout<<"Array without Duplicates : ";
-    for(int x : arr2){
-        cout<<x<<" ";
+    for(int x=0; x<counter; x++){
+        cout<<arr2[x]<<" ";
     }
 }
